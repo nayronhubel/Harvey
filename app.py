@@ -26,14 +26,14 @@ def receive_message():
 				if message.get('message'):
 					#Facebook Messenger ID for user so we know where to send response back to
 					recipient_id = message['sender']['id']
-					income = message['message']
 					if message['message'].get('text'):
-						response_sent_text = get_message(income['text'])
+						response_sent_text = get_message(message['message']['text'])
 						send_message(recipient_id, response_sent_text)
 						#if user sends us a GIF, photo,video, or any other non-text item
 					if message['message'].get('attachments'):
-						response_sent_nontext = get_message()
-						send_message(recipient_id, response_sent_nontext)
+						for attachment in message['message']['attachments']:
+							response_sent_nontext = get_attachments(attachment['payload']['url'])
+							send_message(recipient_id, response_sent_nontext)
 	return "Message Processed"
 
 def verify_fb_token(token_sent):
@@ -46,6 +46,9 @@ def verify_fb_token(token_sent):
 
 #chooses a random message to send to the user
 def get_message(income):
+	return income
+
+def get_attachments(income):
 	return income
 
 #uses PyMessenger to send response to user
