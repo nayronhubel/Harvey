@@ -1,5 +1,7 @@
 #Python libraries that we need to import for our bot
 import random
+import aiml
+import sys
 from flask import Flask, request
 from pymessenger.bot import Bot
 
@@ -7,6 +9,30 @@ app = Flask(__name__)
 ACCESS_TOKEN = 'EAACohPsenJYBANFsNH2zBdRZAYFChz0jxn6ZCKIbvcErZBYHusrPViIS9GYHtaCgUF7Xhkeu1YhEeW37YmB5yHM10BAHZAkFzx2kM17efBCi2cOIWpoMzpZBorMaTCS60WrecvRN6ZBA4zgeFK1OJxaSAlgGxwesK0jPXNXU5rZAwZDZD'
 VERIFY_TOKEN = 'teste1234'
 bot = Bot(ACCESS_TOKEN)
+
+kern = aiml.Kernel()
+brainLoaded = False
+forceReload = False
+while not brainLoaded:
+	if forceReload or (len(sys.argv) >= 2 and sys.argv[1] == "reload"):
+		# Use the Kernel's bootstrap() method to initialize the Kernel. The
+		# optional learnFiles argument is a file (or list of files) to load.
+		# The optional commands argument is a command (or list of commands)
+		# to run after the files are loaded.
+		kern.bootstrap(learnFiles="std-startup.xml", commands="load aiml b")
+		brainLoaded = True
+		# Now that we've loaded the brain, save it to speed things up for
+		# next time.
+		kern.saveBrain("standard.brn")
+	else:
+		# Attempt to load the brain file.  If it fails, fall back on the Reload
+		# method.
+		try:
+			# The optional branFile argument specifies a brain file to load.
+			kern.bootstrap(brainFile = "standard.brn")
+			brainLoaded = True
+		except:
+			forceReload = True
 
 #We will receive messages that Facebook sends our bot at this endpoint 
 @app.route("/", methods=['GET', 'POST'])
@@ -46,7 +72,7 @@ def verify_fb_token(token_sent):
 
 #chooses a random message to send to the user
 def get_message(income):
-	return income
+	return kern.respond(income)
 
 def get_attachments(income):
 	return income
