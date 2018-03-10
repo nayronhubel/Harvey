@@ -5,10 +5,12 @@ import sys
 from flask import Flask, request
 from pymessenger.bot import Bot
 import pyttsx3
+import wget
 import subprocess as s
 from gtts import gTTS
 import speech_recognition as sr
 engine = pyttsx3.init()
+
 
 app = Flask(__name__)
 ACCESS_TOKEN = 'EAACohPsenJYBANFsNH2zBdRZAYFChz0jxn6ZCKIbvcErZBYHusrPViIS9GYHtaCgUF7Xhkeu1YhEeW37YmB5yHM10BAHZAkFzx2kM17efBCi2cOIWpoMzpZBorMaTCS60WrecvRN6ZBA4zgeFK1OJxaSAlgGxwesK0jPXNXU5rZAwZDZD'
@@ -64,7 +66,8 @@ def receive_message():
 					if message['message'].get('attachments'):
 						for attachment in message['message']['attachments']:
 							if(attachment['type'] == "audio"):
-								response_sent_nontext = rec.recognize_google(attachment["payload"]["url"],language="pt")
+								filename = wget.download(attachment["payload"]["url"])
+								response_sent_nontext = rec.recognize_google(filename,language="pt")
 								send_message(recipient_id, response_sent_nontext)
 							else:
 								response_sent_nontext = get_attachments(attachment["payload"]["url"])
