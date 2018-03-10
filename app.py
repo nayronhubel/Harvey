@@ -9,6 +9,7 @@ import wget
 import subprocess as s
 from gtts import gTTS
 import speech_recognition as sr
+from pydub import AudioSegment
 rec = sr.Recognizer()
 #engine = pyttsx3.init()
 
@@ -68,7 +69,9 @@ def receive_message():
 						for attachment in message['message']['attachments']:
 							if(attachment['type'] == "audio"):
 								filename = wget.download(attachment["payload"]["url"])
-								response_sent_nontext = rec.recognize_google(filename,language="pt")
+								sound = AudioSegment.from_mp4(filename)
+								sound.export("/output/path/file.wav", format="wav")
+								response_sent_nontext = rec.recognize_google("/output/path/file.wav",language="pt")
 								send_message(recipient_id, response_sent_nontext)
 							else:
 								response_sent_nontext = get_attachments(attachment["payload"]["url"])
