@@ -68,10 +68,7 @@ def receive_message():
 					if message['message'].get('attachments'):
 						for attachment in message['message']['attachments']:
 							if(attachment['type'] == "audio"):
-								filename = wget.download(attachment["payload"]["url"])
-								sound = AudioSegment.from_mp4(filename)
-								sound.export("/output/path/file.wav", format="wav")
-								response_sent_nontext = rec.recognize_google("/output/path/file.wav",language="pt")
+								response_sent_nontext = get_attachments(attachment["payload"]["url"])
 								send_message(recipient_id, response_sent_nontext)
 							else:
 								response_sent_nontext = get_attachments(attachment["payload"]["url"])
