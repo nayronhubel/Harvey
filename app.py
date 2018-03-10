@@ -61,7 +61,7 @@ def receive_message():
 					if message['message'].get('attachments'):
 						for attachment in message['message']['attachments']:
 							if(attachment['type'] == "audio"):
-								response_sent_nontext = Track(attachment["payload"]["url"])
+								response_sent_nontext = get_message(Track(attachment["payload"]["url"]))
 								send_message(recipient_id, response_sent_nontext)
 							else:
 								response_sent_nontext = get_attachments(attachment["payload"]["url"])
