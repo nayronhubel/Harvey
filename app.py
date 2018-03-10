@@ -4,6 +4,11 @@ import aiml
 import sys
 from flask import Flask, request
 from pymessenger.bot import Bot
+import pyttsx3
+import subprocess as s
+from gtts import gTTS
+import speech_recognition as sr
+engine = pyttsx3.init()
 
 app = Flask(__name__)
 ACCESS_TOKEN = 'EAACohPsenJYBANFsNH2zBdRZAYFChz0jxn6ZCKIbvcErZBYHusrPViIS9GYHtaCgUF7Xhkeu1YhEeW37YmB5yHM10BAHZAkFzx2kM17efBCi2cOIWpoMzpZBorMaTCS60WrecvRN6ZBA4zgeFK1OJxaSAlgGxwesK0jPXNXU5rZAwZDZD'
@@ -58,8 +63,13 @@ def receive_message():
 						#if user sends us a GIF, photo,video, or any other non-text item
 					if message['message'].get('attachments'):
 						for attachment in message['message']['attachments']:
-							response_sent_nontext = get_attachments(attachment['payload']['url'])
-							send_message(recipient_id, response_sent_nontext)
+							if(attachment['type'] == "audio"):
+								response_sent_nontext = rec.recognize_google(attachment["payload"]["url"],language="pt")
+								send_message(recipient_id, response_sent_nontext)
+							else:
+								response_sent_nontext = get_attachments(attachment["payload"]["url"])
+								send_message(recipient_id, response_sent_nontext)
+
 	return "Message Processed"
 
 def verify_fb_token(token_sent):
