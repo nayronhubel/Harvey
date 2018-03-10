@@ -12,7 +12,7 @@ bot = Bot(ACCESS_TOKEN)
 
 kern = aiml.Kernel()
 brainLoaded = False
-forceReload = False
+forceReload = True
 while not brainLoaded:
 	if forceReload or (len(sys.argv) >= 2 and sys.argv[1] == "reload"):
 		# Use the Kernel's bootstrap() method to initialize the Kernel. The
