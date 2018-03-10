@@ -9,7 +9,8 @@ import wget
 import subprocess as s
 from gtts import gTTS
 import speech_recognition as sr
-engine = pyttsx3.init()
+rec = sr.Recognizer()
+#engine = pyttsx3.init()
 
 
 app = Flask(__name__)
