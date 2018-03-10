@@ -8,7 +8,8 @@ import pyttsx3
 import subprocess as s
 from gtts import gTTS
 import speech_recognition as sr
-engine = pyttsx3.init()
+rec = sr.Recognizer()
+#engine = pyttsx3.init()
 
 app = Flask(__name__)
 ACCESS_TOKEN = 'EAACohPsenJYBANFsNH2zBdRZAYFChz0jxn6ZCKIbvcErZBYHusrPViIS9GYHtaCgUF7Xhkeu1YhEeW37YmB5yHM10BAHZAkFzx2kM17efBCi2cOIWpoMzpZBorMaTCS60WrecvRN6ZBA4zgeFK1OJxaSAlgGxwesK0jPXNXU5rZAwZDZD'
