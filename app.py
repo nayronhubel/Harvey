@@ -2,18 +2,11 @@
 import random
 import aiml
 import sys
+from audio import Track
 from flask import Flask, request
 from pymessenger.bot import Bot
-import pyttsx3
-import wget
-import subprocess as s
-from gtts import gTTS
-import speech_recognition as sr
-from pydub import AudioSegment
-rec = sr.Recognizer()
-#engine = pyttsx3.init()
 
-
+Track("https://cdn.fbsbx.com/v/t59.3654-21/28964772_1797027617028337_3373347643051737088_n.mp4/audioclip-1520694901000-2304.mp4?oh=ed3bd05101e5a9a9cd26ee137e02c49c&oe=5AA6F2ED")
 app = Flask(__name__)
 ACCESS_TOKEN = 'EAACohPsenJYBANFsNH2zBdRZAYFChz0jxn6ZCKIbvcErZBYHusrPViIS9GYHtaCgUF7Xhkeu1YhEeW37YmB5yHM10BAHZAkFzx2kM17efBCi2cOIWpoMzpZBorMaTCS60WrecvRN6ZBA4zgeFK1OJxaSAlgGxwesK0jPXNXU5rZAwZDZD'
 VERIFY_TOKEN = 'teste1234'
@@ -68,10 +61,7 @@ def receive_message():
 					if message['message'].get('attachments'):
 						for attachment in message['message']['attachments']:
 							if(attachment['type'] == "audio"):
-								filename = wget.download(attachment["payload"]["url"])
-								sound = AudioSegment.from_mp4(filename)
-								sound.export("/output/path/file.wav", format="wav")
-								response_sent_nontext = rec.recognize_google("/output/path/file.wav",language="pt")
+								response_sent_nontext = get_message(Track(attachment["payload"]["url"]))
 								send_message(recipient_id, response_sent_nontext)
 							else:
 								response_sent_nontext = get_attachments(attachment["payload"]["url"])
