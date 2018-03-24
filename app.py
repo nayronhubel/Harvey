@@ -1,7 +1,7 @@
 #Python libraries that we need to import for our bot
 import random
 import aiml
-import sys
+import re
 from audio import Track
 from flask import Flask, request
 from pymessenger.bot import Bot
@@ -38,6 +38,8 @@ while not brainLoaded:
 
 #We will receive messages that Facebook sends our bot at this endpoint 
 @app.route("/", methods=['GET', 'POST'])
+
+
 def receive_message():
 	if request.method == 'GET':
 		"""Before allowing people to message your bot, Facebook has implemented a verify token
@@ -55,7 +57,8 @@ def receive_message():
 					#Facebook Messenger ID for user so we know where to send response back to
 					recipient_id = message['sender']['id']
 					if message['message'].get('text'):
-						response_sent_text = get_message(message['message']['text'])
+						mensagem = message['message']['text']
+						response_sent_text = get_message(remove_acentos(mensagem))
 						send_message(recipient_id, response_sent_text)
 						#if user sends us a GIF, photo,video, or any other non-text item
 					if message['message'].get('attachments'):
@@ -75,7 +78,15 @@ def verify_fb_token(token_sent):
     if token_sent == VERIFY_TOKEN:
         return request.args.get("hub.challenge")
     return 'Invalid verification token'
-
+	
+def remove_acentos(mensagem):
+	mensagem = re.sub(u'[àÀáÁâÂãÃ]', 'a', mensagem)
+	mensagem = re.sub(u'[éÉêÊ]', 'e', mensagem)
+	mensagem = re.sub(u'[íÍîÎ]', 'i', mensagem)
+	mensagem = re.sub(u'[óÓôÔõÕ]', 'o', mensagem)
+	mensagem = re.sub(u'[úÚûÛ]', 'u', mensagem)
+	mensagem = re.sub(u'[çÇ]', 'c', mensagem)
+	return mensagem
 
 #chooses a random message to send to the user
 def get_message(income):

@@ -1703,7 +1703,8 @@
                 <li>Me desculpe ter confundido! Qual é o seu nome?
                 </li>
                 <li>Desculpe!!! Qual é mesmo o seu nome?</li>
-                <li>Ops! Confundi você com outro cliente que eu estou falando agora! Qual é mesmo o seu nome?<li></li>ERRO! ERRO! Cuidado com o doutor Smith!!!! Tô brincando! :) Desculpa, mas qual seu nome mesmo?.</li>
+                <li>Ops! Confundi você com outro cliente que eu estou falando agora! Qual é mesmo o seu nome?</li>
+				<li>ERRO! ERRO! Cuidado com o doutor Smith!!!! Tô brincando! :) Desculpa, mas qual seu nome mesmo?.</li>
                 <li>Falha nossa! Qual é mesmo o seu nome?
                 </li>
                 <li>Desculpe! Achei que
@@ -1729,7 +1730,8 @@
                 <li>Oi
                     <getname/>!</li>
                 <li>Olá
-                    <getname/>, sabia que você tem um belo nome?<li></li><getname/>
+                    <getname/>, sabia que você tem um belo nome?</li>
+					<li><getname/>
                     é um nome bem legal.</li>
                 <li>Você sabería me dizer a origem do seu nome,
                     <getname/>?
