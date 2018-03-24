@@ -6,7 +6,7 @@ from audio import Track
 from flask import Flask, request
 from pymessenger.bot import Bot
 
-
+Track("https://cdn.fbsbx.com/v/t59.3654-21/28964772_1797027617028337_3373347643051737088_n.mp4/audioclip-1520694901000-2304.mp4?oh=ed3bd05101e5a9a9cd26ee137e02c49c&oe=5AA6F2ED")
 app = Flask(__name__)
 ACCESS_TOKEN = 'EAACohPsenJYBANFsNH2zBdRZAYFChz0jxn6ZCKIbvcErZBYHusrPViIS9GYHtaCgUF7Xhkeu1YhEeW37YmB5yHM10BAHZAkFzx2kM17efBCi2cOIWpoMzpZBorMaTCS60WrecvRN6ZBA4zgeFK1OJxaSAlgGxwesK0jPXNXU5rZAwZDZD'
 VERIFY_TOKEN = 'teste1234'
