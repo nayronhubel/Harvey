@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aiml version="1.0">
+    <category>
+        <pattern>FRACIONAR FÉRIAS</pattern>
+        <template>Na antiga lei trabalhista, era possível dividir os 30 dias de férias em
+dois períodos, um dos quais não poderia ser inferior a 10 (dez)
+dias corridos. A nova lei autoriza que o empregado usufrua em
+até três períodos, desde que haja concordância do
+empregado, sendo que um dos períodos deve ser de, no
+mínimo, 14 dias corridos e nenhum dos períodos pode ser
+inferior a cinco dias corridos. A nova lei veda, ainda, que o
+início das férias seja no período de dois dias que antecede
+feriado ou dia de repouso semanal remunerado.</template>
+    </category>
+	
+    <category>
+        <pattern>* DIVIDIR * FÉRIAS</pattern>
+        <template><srai>FRACIONAR FÉRIAS</srai></template>
+    </category>
+
+	<category>
+        <pattern>* DIVIDIR * FÉRIAS *</pattern>
+        <template><srai>FRACIONAR FÉRIAS</srai></template>
+    </category>
+	
+	<category>
+        <pattern>DIVIDIR * FÉRIAS *</pattern>
+        <template><srai>FRACIONAR FÉRIAS</srai></template>
+    </category>
+    
+	<category>
+        <pattern>* DIVIDIR FÉRIAS *</pattern>
+        <template><srai>FRACIONAR FÉRIAS</srai></template>
+    </category>
+	
+	<category>
+        <pattern>* DIVIDIR FÉRIAS</pattern>
+        <template><srai>FRACIONAR FÉRIAS</srai></template>
+    </category>
+	
+	<category>
+        <pattern>DIVIDIR FÉRIAS *</pattern>
+        <template><srai>FRACIONAR FÉRIAS</srai></template>
+    </category>
+	
+	<category>
+        <pattern>PAGAMENTO FÉRIAS</pattern>
+        <template>É facultado ao empregado converter 1/3 (um terço) do
+período de férias em abono pecuniário, no valor da
+remuneração que lhe seria devida nos dias correspondentes.
+Para tanto, o abono deverá ser requerido até 15 dias antes do
+término do período aquisitivo (período de 12 meses a contar 
+FAQ – Nova Lei Trabalhista – 24 de novembro de 2017 Página 2
+da data de admissão do empregado).</template>
+    </category>
+	
+	<category>
+        <pattern>* FAZER * FÉRIAS *</pattern>
+        <template><srai>PAGAMENTO FÉRIAS</srai></template>
+    </category>
+	
+	<category>
+        <pattern>* FAZER * FÉRIAS</pattern>
+        <template><srai>PAGAMENTO FÉRIAS</srai></template>
+    </category>
+	
+	<category>
+        <pattern>FAZER * FÉRIAS *</pattern>
+        <template><srai>PAGAMENTO FÉRIAS</srai></template>
+    </category>
+	
+	<category>
+        <pattern>FAZER * FÉRIAS</pattern>
+        <template><srai>PAGAMENTO FÉRIAS</srai></template>
+    </category>
+	
+	<category>
+        <pattern>* VENDER * FÉRIAS *</pattern>
+        <template><srai>PAGAMENTO FÉRIAS</srai></template>
+    </category>
+	
+	<category>
+        <pattern>VENDER * FÉRIAS *</pattern>
+        <template><srai>PAGAMENTO FÉRIAS</srai></template>
+    </category>
+	
+	<category>
+        <pattern>* VENDER * FÉRIAS</pattern>
+        <template><srai>PAGAMENTO FÉRIAS</srai></template>
+    </category>
+	
+	<category>
+        <pattern>VENDER * FÉRIAS</pattern>
+        <template><srai>PAGAMENTO FÉRIAS</srai></template>
+    </category>
+
+</aiml>
