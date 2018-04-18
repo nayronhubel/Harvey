@@ -1,5 +1,5 @@
-import spacy
-nlp = spacy.load('pt')
+import pt_core_news_sm
+nlp = pt_core_news_sm.load()
 print('Digite uma frase')
 frase = input()
 doc = nlp(frase)

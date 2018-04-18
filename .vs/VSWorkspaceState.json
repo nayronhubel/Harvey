@@ -1,7 +1,9 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\machine-learning",
+    "\\standard"
   ],
-  "SelectedNode": "\\app.py",
+  "SelectedNode": "\\machine-learning\\mongo.py",
   "PreviewInSolutionExplorer": false
 }
